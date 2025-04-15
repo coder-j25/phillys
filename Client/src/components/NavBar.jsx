@@ -7,8 +7,8 @@ const NavBar = () => {
     return (
         <>
             <div>
-                <div>
-                   <img src={logo} className="w-[15px]"/>
+                <div className="bg-black">
+                   <img src={logo} className="w-[30px]"/>
                 </div>
 <div>
    
