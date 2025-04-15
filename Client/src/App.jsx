@@ -1,10 +1,15 @@
 import './index.css'
-
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <h1>This is a test element</h1>
+      <Routes>
+        <Route path="/" element={<AboutMe />}/>
+        <Route path="/menu" element={<Menu />}/>
+        <Route path="/findus" element={<FindUs />}/>
+        <Route path="/contact" element={<ContactUs />}/>
+      </Routes>
     </>
   );
 }
