@@ -4,7 +4,73 @@ import Logo from "../assets/logoNoBkgd.png";
 import emailjs from "@emailjs/browser";
 
 const ContactUs = () => {
- 
+  const [formData, setFormData] = useState({});
+  const form = useRef(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleValidation = (obj) => {
+    const requiredFields = ["fullName", "email", "message"];
+    for (let field of requiredFields) {
+      if (!obj[field]) {
+        alert(
+          `Please enter your ${field.replace(/([A-Z])/g, " $1").toLowerCase()}`
+        );
+        return false;
+      } else if (field === "fullName") {
+        const nameRegex = /^[a-zA-Z\s]+$/;
+        if (!nameRegex.test(obj[field])) {
+          alert(
+            `Please enter a valid ${field
+              .replace(/([A-Z])/g, " $1")
+              .toLowerCase()}`
+          );
+          return false;
+        }
+      } else if (field === "email") {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(obj[field])) {
+          alert("Please enter a valid email address");
+          return false;
+        }
+      } else if (field === "message") {
+        if (obj[field].length < 10) {
+          alert("Message should be at least 10 characters long");
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!handleValidation(formData)) return;
+    emailjs
+      .sendForm(
+        "service_yejdmbn",
+        "template_epxd2oh",
+        form.current,
+        "0F1I_evtXzAvXqrLL"
+      )
+      .then(
+        (result) => {
+          console.log("form submitted:", result.text);
+          alert("Message sent successfully!");
+          setFormData({});
+        },
+        (error) => {
+          console.log("Error", error.text);
+          alert("Failed to send message. Please try again.");
+        }
+      );
+  };
 
   return (
     <div
