@@ -1,3 +1,5 @@
+import FindUsButton from "../components/FindUsButton";
+
 const AboutMe = () => {
   return (
     <div className="flex flex-col-reverse relative bg-[url('/src/assets/hero.jpg')] bg-no-repeat bg-cover text-white h-screen p-3">
@@ -8,7 +10,7 @@ const AboutMe = () => {
           Serving the best Philly cheesesteaks in the Tucson area! Visit our
           Find us page to check our calendar and see where we'll be next.
         </p>
-        <button className="bg-black border-2 border-white">Find Us</button>
+       <FindUsButton style="bg-black w-20 p-1 border-2 rounded-lg"/>
       </div>
       {/* section for placeholder  */}
       <div>
