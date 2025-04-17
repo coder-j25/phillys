@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import AboutMe from './views/AboutMe';
 // import Menu from './views/Menu';
 import FindUs from './views/FindUs';
-// import ContactUs from './views/ContactUs';
+import ContactUs from './views/ContactUs';
 import Footer from './components/Footer';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<AboutMe />}/>
         {/* <Route path="/menu" element={<Menu />}/> */}
         <Route path="/findus" element={<FindUs />}/>
-        {/* <Route path="/contact" element={<ContactUs />}/> */}
+        <Route path="/contactus" element={<ContactUs />}/>
       </Routes>
       <Footer />
     </>
